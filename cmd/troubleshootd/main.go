@@ -45,7 +45,12 @@ func main() {
 		logLevel zap.AtomicLevel
 	)
 
-	flag.StringVar(&httpAddr, "http.addr", ":8080", "HTTP address to listen on")
+	#Adding for Heroku testing
+	port := ":" + os.Getenv("PORT")
+	if port == ":" {
+		port = ":8080" // Default port
+	}
+	flag.StringVar(&httpAddr, "http.addr", port, "HTTP address to listen on")
 	flag.StringVar(&exploredAPIAddress, "explorer.address", "https://api.siascan.com", "Explored API address")
 	flag.StringVar(&exploredAPIPassword, "explorer.password", "", "Explored API password")
 	flag.TextVar(&logLevel, "log.level", zap.NewAtomicLevelAt(zapcore.InfoLevel), "Log level (debug, info, warn, error)")
