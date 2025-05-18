@@ -45,7 +45,7 @@ func main() {
 		logLevel zap.AtomicLevel
 	)
 
-	#Adding for Heroku testing
+	// Adding for Heroku testing
 	port := ":" + os.Getenv("PORT")
 	if port == ":" {
 		port = ":8080" // Default port
